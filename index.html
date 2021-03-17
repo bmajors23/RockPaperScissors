@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Page Title</title>
+  <meta charset="UTF-8"/>
+</head>
+<body>
+  <script>
+    // Create variables for players score and computers score
+    let playerScore = 0
+    let compScore = 0
+    // Create loop until score of either player or computer reaches 5.
+    while (playerScore < 5 && compScore < 5) {
+        // Prompt user for choice between rock, paper, or scissors
+        let playerChoice = parseInt(prompt("Choose rock(0), paper(1), or scissors(2)."));
+        // Randomlly generate rock/paper/scissors choice for computer
+        let compChoice = Math.floor(Math.random() * 3);
+        // Determine winner of rock/paper/scissors with if/else statements
+        if (playerChoice === compChoice) {
+            // Draw. Loop again. No effect on score. Display score
+            console.log("It's a draw! No points awarded to either player")
+            console.log(`Player score: ${playerScore} Computer Score ${compScore}`)
+        }
+        else if (playerChoice === 0 && compChoice === 1) {
+            // Player lose. Add point to compScore. Display score 
+            console.log("Rock loses to paper. You lose! Computer is awarded with 1 point.");
+            compScore++;
+            console.log(`Player score: ${playerScore} Computer Score ${compScore}`)
+        }
+        else if (playerChoice === 0 && compChoice === 2) {
+            // Player win. Add point to playerScore. Display score 
+            console.log("Rock beats scissors. You win! Player is awarded with 1 point.");
+            playerScore++;
+            console.log(`Player score: ${playerScore} Computer Score ${compScore}`)
+        }
+        else if (playerChoice === 1 && compChoice === 0) {
+            // Player win. Add point to playerScore. Display score 
+            console.log("Paper beats rock. You win! Player is awarded with 1 point.");
+            playerScore++;
+            console.log(`Player score: ${playerScore} Computer Score ${compScore}`)
+        }
+        else if (playerChoice === 1 && compChoice === 2) {
+            // Player lose. Add point to compScore. Display score 
+            console.log("Paper loses to scissors. You lose! Computer is awarded with 1 point.");
+            compScore++;
+            console.log(`Player score: ${playerScore} Computer Score ${compScore}`)
+        }
+        else if (playerChoice === 2 && compChoice === 0) {
+            // Player lose. Add point to compScore. Display score 
+            console.log("Scissors loses to rock. You lose! Computer is awarded with 1 point.");
+            compScore++;
+            console.log(`Player score: ${playerScore} Computer Score ${compScore}`)
+        }
+        else if (playerChoice === 2 && compChoice === 1) {
+            // Player win. Add point to playerScore. Display score 
+            console.log("Scissors beats paper. You win! Player is awarded with 1 point.");
+            playerScore++;
+            console.log(`Player score: ${playerScore} Computer Score ${compScore}`)
+        }
+        else {
+            // Tell user their input was invalid. Display score
+            console.log("Invalid Input");
+            console.log(`Player score: ${playerScore} Computer Score: ${compScore}`)
+        }
+    }
+    // Determine winner of game and output message with result
+    if (playerScore === 5) {
+        console.log("Good Game! You win!")
+    }
+    else {
+        console.log("Good Game! You lose!")
+    }
+  </script>
+</body>
+</html>
