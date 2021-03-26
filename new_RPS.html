@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+    <div>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+    <style>
+        body {
+            background-image: url(background.jpeg);
+        }
+         
+        button {
+            margin: 50px;
+            text-align: center;
+        }
+        .container {
+            margin-right:auto;
+            margin-left:auto;
+            padding-left:15px;
+            padding-right:15px;
+            text-align:center;
+            align-content:center;
+        }   
+        .text {
+            text-align: center;
+            margin: 10px;
+            font-weight: bold;
+            font-size: 50px;
+            text-shadow: -1px -1px 0 rgb(255, 255, 255), 1px -1px 0 rgb(255, 255, 255), -1px 1px 0 rgb(255, 255, 255), 1px 1px 0 rgb(255, 255, 255);
+        }
+    </style>
+<body>
+<head>
+  <title>Page Title</title>
+  <meta charset="UTF-8"/>
+</head>
+<div class="container">
+    <button onclick="playRound('rock')">
+        <img src="rock.png" height="100"/>
+    </button>
+    <button onclick="playRound('paper')">
+        <img src="file.png" height="100"/>
+    </button>
+    <button onclick="playRound('scissors')">
+        <img src="scissors.png" height="100"/>
+</button>
+</div>
+<div id="scorekeeper" class="text"></div>
+<div id="compscorekeeper" class="text"></div>
+<div id="result" class="text"></div>
+<div id="scoreResult" class="text"></div>
+  <script>
+    let playerScore = 0
+    let compScore = 0
+    function playRound(playerChoice) {
+        const scorekeeper = document.querySelector('#scorekeeper');
+        scorekeeper.textContent = `Your score is: ${playerScore}`;
+        const compscorekeeper = document.querySelector('#compscorekeeper');
+        compscorekeeper.textContent = `The computer's score is: ${compScore}`;
+        const result = document.querySelector('#result');
+        const scoreResult = document.querySelector('#scoreResult');
+        scoreResult.textContent = ""
+        if (playerScore === 5) {
+            scoreResult.textContent = "Game over. You win!"
+            playerScore = 0;
+            compScore = 0;
+        }
+        else if (compScore === 5) {
+            scoreResult.textContent = "Game over. You lose!"
+            playerScore = 0;
+            compScore = 0;
+        }
+        // Randomlly generate rock/paper/scissors choice for computer
+        let compChoice = Math.floor(Math.random() * 3);
+        // Determine winner of rock/paper/scissors with if/else statements
+        if (playerChoice === "rock" && compChoice === 0) {
+            // Draw. Loop again. No effect on score. Display score
+            result.textContent = "It's a draw! No points awarded to either player";
+            console.log("It's a draw! No points awarded to either player")
+            console.log(`Player score: ${playerScore} Computer Score ${compScore}`)
+            scorekeeper.textContent = `Your score is: ${playerScore}`;
+            compscorekeeper.textContent = `The computer's score is: ${compScore}`;
+        }
+        else if (playerChoice === "rock" && compChoice === 1) {
+            // Player lose. Add point to compScore. Display score 
+            result.textContent = "Rock loses to paper. You lose! Computer is awarded with 1 point.";
+            console.log("Rock loses to paper. You lose! Computer is awarded with 1 point.");
+            compScore++;
+            console.log(`Player score: ${playerScore} Computer Score ${compScore}`)
+            scorekeeper.textContent = `Your score is: ${playerScore}`;
+            compscorekeeper.textContent = `The computer's score is: ${compScore}`;
+        }
+        else if (playerChoice === "rock" && compChoice === 2) {
+            // Player win. Add point to playerScore. Display score 
+            result.textContent = "Rock beats scissors. You win! Player is awarded with 1 point.";
+            console.log("Rock beats scissors. You win! Player is awarded with 1 point.");
+            playerScore++;
+            console.log(`Player score: ${playerScore} Computer Score ${compScore}`)
+            scorekeeper.textContent = `Your score is: ${playerScore}`;
+            compscorekeeper.textContent = `The computer's score is: ${compScore}`;
+        }
+        else if (playerChoice === "paper" && compChoice === 0) {
+            // Player win. Add point to playerScore. Display score 
+            result.textContent = "Paper beats rock. You win! Player is awarded with 1 point.";
+            console.log("Paper beats rock. You win! Player is awarded with 1 point.");
+            playerScore++;
+            console.log(`Player score: ${playerScore} Computer Score ${compScore}`)
+            scorekeeper.textContent = `Your score is: ${playerScore}`;
+            compscorekeeper.textContent = `The computer's score is: ${compScore}`;
+        }
+        else if (playerChoice === "paper" && compChoice === 2) {
+            // Player win. Add point to playerScore. Display score 
+            result.textContent = "Paper loses to scissors. You lose! Computer is awarded with 1 point.";
+            console.log("Paper loses to scissors. You lose! Computer is awarded with 1 point.");
+            compScore++;
+            console.log(`Player score: ${playerScore} Computer Score ${compScore}`)
+            scorekeeper.textContent = `Your score is: ${playerScore}`;
+            compscorekeeper.textContent = `The computer's score is: ${compScore}`;
+        }
+        else if (playerChoice === "paper" && compChoice === 1) {
+            // Player lose. Add point to compScore. Display score 
+            result.textContent = "It's a draw! No points awarded to either player";
+            console.log("It's a draw! No points awarded to either player");
+            console.log(`Player score: ${playerScore} Computer Score ${compScore}`)
+            scorekeeper.textContent = `Your score is: ${playerScore}`;
+            compscorekeeper.textContent = `The computer's score is: ${compScore}`;
+        }
+        else if (playerChoice === "scissors" && compChoice === 0) {
+            // Player lose. Add point to compScore. Display score 
+            result.textContent = "Scissors loses to rock. You lose! Computer is awarded with 1 point.";
+            console.log("Scissors loses to rock. You lose! Computer is awarded with 1 point.");
+            compScore++;
+            console.log(`Player score: ${playerScore} Computer Score ${compScore}`)
+            scorekeeper.textContent = `Your score is: ${playerScore}`;
+            compscorekeeper.textContent = `The computer's score is: ${compScore}`;
+        }
+        else if (playerChoice === "scissors" && compChoice === 1) {
+            // Player win. Add point to playerScore. Display score 
+            result.textContent = "Scissors beats paper. You win! Player is awarded with 1 point.";
+            console.log("Scissors beats paper. You win! Player is awarded with 1 point.");
+            playerScore++;
+            console.log(`Player score: ${playerScore} Computer Score ${compScore}`)
+            scorekeeper.textContent = `Your score is: ${playerScore}`;
+            compscorekeeper.textContent = `The computer's score is: ${compScore}`;
+        }
+        else if (playerChoice === "scissors" && compChoice === 2) {
+            // Player lose. Add point to compScore. Display score 
+            result.textContent = "It's a draw! No points awarded to either player";
+            console.log("It's a draw! No points awarded to either player");
+            console.log(`Player score: ${playerScore} Computer Score ${compScore}`)
+            scorekeeper.textContent = `Your score is: ${playerScore}`;
+            compscorekeeper.textContent = `The computer's score is: ${compScore}`;
+        }
+        else {
+            // Tell user their input was invalid. Display score
+            console.log("Invalid Input");
+            console.log(`Player score: ${playerScore} Computer Score: ${compScore}`)
+        }
+        if (playerScore === 5) {
+            scoreResult.textContent = "Game over. You win!"
+            playerScore = 0;
+            compScore = 0;
+        }
+        else if (compScore === 5) {
+            scoreResult.textContent = "Game over. You lose!"
+            playerScore = 0;
+            compScore = 0;
+        }
+    }
+    // Create variables for players score and computers score
+  </script>
+</body>
+</html>
